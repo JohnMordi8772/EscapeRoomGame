@@ -242,8 +242,6 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.contactCount == 0)
         {
             grounded = false;
-
-            print("ungrounded");
         }
         else
         {
