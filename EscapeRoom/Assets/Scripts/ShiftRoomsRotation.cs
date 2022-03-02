@@ -4,23 +4,48 @@ using UnityEngine;
 
 public class ShiftRoomsRotation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool playerPresent = false;
+    public float timeToRotate = 0f;
+    public float rotationTime = 10f;
+    public float rotation = 90f;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            transform.Rotate(0, 0, 90);
-            //StartCoroutine(Rotate());
+        if (playerPresent == false)
+        {
+            timeToRotate += Time.deltaTime;
+
+            if(timeToRotate >= rotationTime)
+            {
+                transform.Rotate(0, 0, 90);
+                timeToRotate = 0;
+            }
+        }
     }
 
-    void FixedUpdate()
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Player")
+        {
+            playerPresent = true;
+        }
+        else
+        {
+            playerPresent = false;
+        }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            playerPresent = false;
+        }
+        else
+        {
+            playerPresent = true;
+        }
     }
 
     IEnumerator Rotate()
