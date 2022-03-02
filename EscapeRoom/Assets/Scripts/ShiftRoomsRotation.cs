@@ -14,8 +14,13 @@ public class ShiftRoomsRotation : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            transform.Rotate(0, 0, 45);
+            transform.Rotate(0, 0, 90);
             //StartCoroutine(Rotate());
+    }
+
+    void FixedUpdate()
+    {
+
     }
 
     IEnumerator Rotate()
