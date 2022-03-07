@@ -6,6 +6,7 @@ public class ShiftRoomReplace : MonoBehaviour
 {
     [SerializeField] GameObject[] rooms;
     int i = 0;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -32,6 +32,10 @@ public class PlayerBehaviour : MonoBehaviour
     public bool jumped = false;
     */
 
+    public bool itemHeld = false;
+    public Vector3 handPos;
+    public GameObject item;
+
     public bool crouched = false;
 
     public KeyCode sprint = KeyCode.LeftControl;
@@ -48,6 +52,11 @@ public class PlayerBehaviour : MonoBehaviour
         moveDir = (transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical")).normalized;
         CameraMovement();
         Crouch();
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            GrabItem();
+        }
 
         if (Input.GetKey(KeyCode.Escape))
         {
@@ -182,6 +191,33 @@ public class PlayerBehaviour : MonoBehaviour
     }*/
 
     float xRotation;
+
+    void GrabItem()
+    {
+        if (itemHeld == false)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 2))
+            {
+                if (hit.collider.gameObject.tag == "Item")
+                {
+                    item = hit.collider.gameObject;
+                    item.transform.parent = gameObject.transform;
+                    item.transform.position = handPos;
+                    item.layer = 3;
+                    item.GetComponent<Rigidbody>().useGravity = false;
+                }
+            }
+        }
+        else
+        {
+            item.transform.parent = null;
+            item.GetComponent<Rigidbody>().useGravity = true;
+            item.layer = 0;
+            item = null;
+        }
+    }
 
     /// <summary>
     /// Script used to find a grounding or wall hop-off point
