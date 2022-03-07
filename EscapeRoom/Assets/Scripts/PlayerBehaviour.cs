@@ -34,6 +34,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool itemHeld = false;
     public Vector3 handPos;
+    public FixedJoint fj;
     public GameObject item;
 
     public bool crouched = false;
@@ -53,7 +54,7 @@ public class PlayerBehaviour : MonoBehaviour
         CameraMovement();
         Crouch();
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             GrabItem();
         }
@@ -204,18 +205,22 @@ public class PlayerBehaviour : MonoBehaviour
                 {
                     item = hit.collider.gameObject;
                     item.transform.parent = gameObject.transform;
-                    item.transform.position = handPos;
-                    item.layer = 3;
-                    item.GetComponent<Rigidbody>().useGravity = false;
+                    item.transform.localPosition = handPos;
+                    itemHeld = true;
                 }
             }
         }
         else
         {
-            item.transform.parent = null;
-            item.GetComponent<Rigidbody>().useGravity = true;
-            item.layer = 0;
-            item = null;
+            RaycastHit hit;
+
+            if (Physics.Raycast(item.transform.position, Vector3.down, out hit))
+            {
+                item.transform.position = hit.point + new Vector3(0, item.GetComponent<Collider>().bounds.extents.y, 0);
+                item.transform.parent = hit.collider.gameObject.transform;
+                item = null;
+                itemHeld = false;
+            }
         }
     }
 

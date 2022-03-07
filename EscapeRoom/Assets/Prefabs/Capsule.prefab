@@ -113,7 +113,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &7560014536855185026
 MonoBehaviour:
@@ -146,10 +146,14 @@ MonoBehaviour:
   crouchSpeed: 5
   speedCap: 10
   finalMove: {x: 0, y: 0, z: 0}
+  itemHeld: 0
+  handPos: {x: 0.4, y: 0.2, z: 0.7}
+  fj: {fileID: 0}
+  item: {fileID: 0}
   crouched: 0
   sprint: 306
   crouch: 304
-  sensitivity: 200
+  sensitivity: 250
 --- !u!1 &7560014537304213311
 GameObject:
   m_ObjectHideFlags: 0
