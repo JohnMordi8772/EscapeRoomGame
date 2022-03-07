@@ -8,7 +8,7 @@ public class TylerRoomRotate : MonoBehaviour
 
     public bool isHorizontal;
     public bool isVertical;
-    public bool isZertical;
+    
     public GameObject GameController;
     public TylerGameController tgc;
 
@@ -29,11 +29,7 @@ public class TylerRoomRotate : MonoBehaviour
         {
             isVertical = true;
         }
-        if(transform.position.z == 0)
-        {
-            isZertical = true;
-        }
-
+        
         if(tgc.canRotate == true)
         {
             if (Input.GetKeyDown(KeyCode.Q) && isHorizontal == true)
@@ -128,52 +124,9 @@ public class TylerRoomRotate : MonoBehaviour
                     }
                 }
             }
-            /*if (Input.GetKeyDown(KeyCode.Z) && isZertical == true)
-            {
-                if (transform.position.y > 0)
-                {
-                    transform.position = new Vector3(0, 0, 5);
-                }
-                else if (transform.position.y < 0)
-                {
-                    transform.position = new Vector3(0, 0, -5);
-                }
-                else if (transform.position.y == 0)
-                {
-                    if (transform.position.z == 5)
-                    {
-                        transform.position = new Vector3(0, -5, 0);
-                    }
-                    else if (transform.position.z == -5)
-                    {
-                        transform.position = new Vector3(0, 5, 0);
-                    }
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.X) && isZertical == true)
-            {
-                if (transform.position.y > 0)
-                {
-                    transform.position = new Vector3(0, 0, -5);
-                }
-                else if (transform.position.y < 0)
-                {
-                    transform.position = new Vector3(0, 0, 5);
-                }
-                else if (transform.position.y == 0)
-                {
-                    if (transform.position.z == -5)
-                    {
-                        transform.position = new Vector3(0, -5, 0);
-                    }
-                    else if (transform.position.z == 5)
-                    {
-                        transform.position = new Vector3(0, 5, 0);
-                    }
-                }
-            }
-            */
+            
+            
+                
         }
     }    
         
