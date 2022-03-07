@@ -212,13 +212,12 @@ public class PlayerBehaviour : MonoBehaviour
         }
         else
         {
-            item.transform.parent = null;
-
             RaycastHit hit;
 
             if (Physics.Raycast(item.transform.position, Vector3.down, out hit))
             {
                 item.transform.position = hit.point + new Vector3(0, item.GetComponent<Collider>().bounds.extents.y, 0);
+                item.transform.parent = hit.collider.gameObject.transform;
                 item = null;
                 itemHeld = false;
             }
