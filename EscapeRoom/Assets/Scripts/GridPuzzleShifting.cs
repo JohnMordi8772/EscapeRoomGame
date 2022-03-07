@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class GridPuzzleShifting : MonoBehaviour
 {
     [SerializeField] GameObject[] rooms;
-    [SerializeField] Transform[] roomPositions;
     [SerializeField] GameObject puzzlePad;
     GameObject selected;
     // Start is called before the first frame update
@@ -19,7 +18,19 @@ public class GridPuzzleShifting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            puzzlePad.SetActive(!puzzlePad.activeInHierarchy);
+            Cursor.visible = puzzlePad.activeInHierarchy;
+            if(Cursor.visible)
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
     }
 
     public void Select(GameObject button)
@@ -41,7 +52,6 @@ public class GridPuzzleShifting : MonoBehaviour
             rooms[8].transform.position = rooms[Int32.Parse(roomNumber) - 1].transform.position;
             rooms[Int32.Parse(roomNumber) - 1].transform.position = temp;
 
-            //Debug.Log(Vector2.Distance(button.transform.position, selected.transform.position));
             selected.GetComponent<Image>().color = Color.white;
             button.GetComponentInChildren<Text>().text = selected.GetComponentInChildren<Text>().text;
             selected.GetComponentInChildren<Text>().text = "";
