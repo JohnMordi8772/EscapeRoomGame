@@ -8,6 +8,7 @@ public class TylerRoomRotate : MonoBehaviour
 
     public bool isHorizontal;
     public bool isVertical;
+    
     public GameObject GameController;
     public TylerGameController tgc;
 
@@ -28,7 +29,7 @@ public class TylerRoomRotate : MonoBehaviour
         {
             isVertical = true;
         }
-
+        
         if(tgc.canRotate == true)
         {
             if (Input.GetKeyDown(KeyCode.Q) && isHorizontal == true)
@@ -123,7 +124,9 @@ public class TylerRoomRotate : MonoBehaviour
                     }
                 }
             }
-
+            
+            
+                
         }
     }    
         
