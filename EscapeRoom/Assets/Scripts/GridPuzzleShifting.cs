@@ -45,7 +45,7 @@ public class GridPuzzleShifting : MonoBehaviour
             selected.GetComponent<Image>().color = Color.white;
             selected = null;
         }
-        else if(button.GetComponentInChildren<Text>().text == "" && Vector2.Distance(button.transform.localPosition, selected.transform.localPosition) <= 250)// && Vector2.Distance(button.transform.localPosition, selected.transform.localPosition) )
+        else if(button.GetComponentInChildren<Text>().text == "" && Vector2.Distance(button.transform.localPosition, selected.transform.localPosition) <= 250) // && Vector2.Distance(button.transform.localPosition, selected.transform.localPosition) )
         {
             string roomNumber = selected.GetComponentInChildren<Text>().text;
             Vector2 temp = rooms[8].transform.position;
