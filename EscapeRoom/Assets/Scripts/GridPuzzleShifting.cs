@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GridPuzzleShifting : MonoBehaviour
 {
-    [SerializeField] GameObject[] rooms;
+    [SerializeField] public GameObject[] rooms;
     [SerializeField] int[] roomsPos;
     [SerializeField] GameObject puzzlePad;
     GameObject selected;

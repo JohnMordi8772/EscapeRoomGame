@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LadderBehavior : MonoBehaviour
 {
-    bool atLadder;
-    GameObject player;
+    public bool atLadder;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
