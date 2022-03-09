@@ -7,12 +7,19 @@ using UnityEngine.UI;
 public class GridPuzzleShifting : MonoBehaviour
 {
     [SerializeField] GameObject[] rooms;
+    [SerializeField] int[] roomsPos;
     [SerializeField] GameObject puzzlePad;
     GameObject selected;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        roomsPos = new int[rooms.Length];
+
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            roomsPos[i] = i;
+        }
     }
 
     // Update is called once per frame
@@ -51,6 +58,10 @@ public class GridPuzzleShifting : MonoBehaviour
             Vector2 temp = rooms[8].transform.position;
             rooms[8].transform.position = rooms[Int32.Parse(roomNumber) - 1].transform.position;
             rooms[Int32.Parse(roomNumber) - 1].transform.position = temp;
+
+            int temp_ = roomsPos[8];
+            roomsPos[8] = roomsPos[Int32.Parse(roomNumber) - 1];
+            roomsPos[Int32.Parse(roomNumber) - 1] = temp_;
 
             selected.GetComponent<Image>().color = Color.white;
             button.GetComponentInChildren<Text>().text = selected.GetComponentInChildren<Text>().text;

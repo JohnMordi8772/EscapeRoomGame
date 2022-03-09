@@ -1908,16 +1908,7 @@ MonoBehaviour:
   - {fileID: 237989684}
   - {fileID: 1983668549}
   - {fileID: 1998256768}
-  roomPositions:
-  - {fileID: 1426584327}
-  - {fileID: 1095204464}
-  - {fileID: 2007798143}
-  - {fileID: 379586626}
-  - {fileID: 695828569}
-  - {fileID: 679201978}
-  - {fileID: 1448692063}
-  - {fileID: 197047064}
-  - {fileID: 941234980}
+  roomsPos: 
   puzzlePad: {fileID: 2129036650}
 --- !u!4 &530874794
 Transform:
