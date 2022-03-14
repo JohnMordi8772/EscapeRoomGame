@@ -201,12 +201,18 @@ public class PlayerBehaviour : MonoBehaviour
 
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 2))
             {
-                if (hit.collider.gameObject.tag == "Item")
+                GameObject hit_ = hit.collider.gameObject;
+
+                if (hit_.tag == "Item")
                 {
-                    item = hit.collider.gameObject;
+                    item = hit_;
                     item.transform.parent = gameObject.transform;
                     item.transform.localPosition = handPos;
                     itemHeld = true;
+                }
+                else if(hit_.tag == "Simon")
+                {
+                    hit_.GetComponent<SimonButtons>().Press();
                 }
             }
         }
