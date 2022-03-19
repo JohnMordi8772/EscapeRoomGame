@@ -58,6 +58,11 @@ public class GridPuzzleShifting : MonoBehaviour
             Vector2 temp = rooms[8].transform.position;
             rooms[8].transform.position = rooms[Int32.Parse(roomNumber) - 1].transform.position;
             rooms[Int32.Parse(roomNumber) - 1].transform.position = temp;
+            Beam[] beams = rooms[Int32.Parse(roomNumber) - 1].GetComponentsInChildren<Beam>();
+            foreach(Beam i in beams)
+            {
+                i.SetBeamStart();
+            }
 
             int temp_ = roomsPos[8];
             roomsPos[8] = roomsPos[Int32.Parse(roomNumber) - 1];
