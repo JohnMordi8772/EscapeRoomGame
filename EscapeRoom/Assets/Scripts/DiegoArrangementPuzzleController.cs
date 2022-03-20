@@ -10,23 +10,64 @@ public class DiegoArrangementPuzzleController : MonoBehaviour
     public GameObject square6;
     public GameObject square7;
     public GameObject square8;
+    public GameObject square9;
+
+    private bool miss1;
+    private bool miss2;
+    private bool miss3;
+
+    private bool click1 = false;
+    private bool click2 = false;
+    private bool click3 = false;
+
+    public bool puzzleComplete = false;
 
     // Update is called once per frame
     void Update()
     {
-        CheckSquares();
+        CheckValues();
     }
 
-    void CheckSquares()
+    void CheckValues()
     {
-        if (square1.transform.position == Vector3.zero) // This will check the 8 box positions once we decide where they go
+        if (Input.GetMouseButtonDown(0) && Input.mousePosition == square2.transform.position)
         {
-            PuzzleComplete();
+            click1 = true;
         }
-    }
+        else if (Input.GetMouseButtonDown(0) && click1 && Input.mousePosition == square1.transform.position)
+        {
+            click2 = true;
+        }
+        else if (Input.GetMouseButtonDown(0) && click2 && Input.mousePosition == square9.transform.position)
+        {
+            click3 = true;
+        }
+        else if (Input.GetMouseButtonDown(0) && click3 && Input.mousePosition == square4.transform.position)
+        {
+            puzzleComplete = true;
+        }
 
-    void PuzzleComplete()
-    {
+        if (Input.GetMouseButtonDown(0) && !miss1)
+        {
+            miss1 = true;
+        }
+        else if (Input.GetMouseButtonDown(0) && miss1)
+        {
+            miss2 = true;
+        }
+        else if (Input.GetMouseButtonDown(0) && miss2)
+        {
+            miss3 = true;
+        }
+        else if (Input.GetMouseButtonDown(0) && miss3)
+        {
+            miss1 = false;
+            miss2 = false;
+            miss3 = false;
 
+            click1 = false;
+            click2 = false;
+            click3 = false;
+        }
     }
 }
