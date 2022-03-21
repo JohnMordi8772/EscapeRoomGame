@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Beam : MonoBehaviour
 {
-    [SerializeField] GameObject receiver;
     RaycastHit hit;
     Ray ray;
     [SerializeField] LineRenderer lr;
     [SerializeField] GameObject beamProjector;
+    [SerializeField] Gradient red, green;
+    bool hitReceiver;
 
 
     // Start is called before the first frame update
@@ -16,6 +17,7 @@ public class Beam : MonoBehaviour
     {
         lr.SetPosition(0, beamProjector.transform.position);
         transform.position = beamProjector.transform.position;
+        hitReceiver = false;
     }
 
     // Update is called once per frame
@@ -29,6 +31,19 @@ public class Beam : MonoBehaviour
             //    hit.transform.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
             //}
             lr.SetPosition(1, hit.point);
+            Debug.Log(hit.collider.gameObject.tag);
+            if(hit.collider.gameObject.tag == "Receiver")
+            {
+                hitReceiver = true;
+                lr.startColor = Color.green;
+                lr.endColor = Color.green;
+            }
+            else
+            {
+                hitReceiver = false;
+                lr.startColor = Color.red;
+                lr.endColor = Color.red;
+            }
         }
     }
 
