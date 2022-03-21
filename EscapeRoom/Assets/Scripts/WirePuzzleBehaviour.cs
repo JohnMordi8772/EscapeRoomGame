@@ -25,7 +25,7 @@ public class WirePuzzleBehaviour : MonoBehaviour
             DarkBlue.transform.position == new Vector3(-10, 0, 0) && Yellow.transform.position == new Vector3(0, 0, 0) && Magenta.transform.position == new Vector3(10, 0, 0) &&
             Orange.transform.position == new Vector3(-10, -10, 0) && Black.transform.position == new Vector3(0, -10, 0) && Empty.transform.position == new Vector3(10, -10, 0))
         {
-            openWinDoor = true;
+            PuzzlesFinishedManager.Wire();
         }
         
         if(openWinDoor == true)

@@ -9,7 +9,7 @@ public class Beam : MonoBehaviour
     [SerializeField] LineRenderer lr;
     [SerializeField] GameObject beamProjector;
     [SerializeField] Gradient red, green;
-    bool hitReceiver;
+    public bool hitReceiver;
 
 
     // Start is called before the first frame update
@@ -17,13 +17,16 @@ public class Beam : MonoBehaviour
     {
         lr.SetPosition(0, beamProjector.transform.position);
         transform.position = beamProjector.transform.position;
+        lr.startColor = Color.red;
+        lr.endColor = Color.red;
         hitReceiver = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Physics.Raycast(ray = new Ray(transform.position, transform.forward), out hit, 30) && hit.collider.tag != "Player")
+        SetBeamStart();
+        if (Physics.Raycast(ray = new Ray(transform.position, transform.forward), out hit, 30) && hit.collider.tag != "Player")
         {
             //if (hit.transform.gameObject.tag == "Receiver")
             //{

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Item
   - Simon
+  - Room
+  - Receiver
   layers:
   - Default
   - TransparentFX
