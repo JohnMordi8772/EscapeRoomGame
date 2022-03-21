@@ -22,29 +22,34 @@ public class DiegoArrangementPuzzleController : MonoBehaviour
 
     public bool puzzleComplete = false;
 
+    RaycastHit hit;
+
     // Update is called once per frame
     void Update()
     {
-        CheckValues();
+        if (Input.GetKeyDown(KeyCode.E))
+            Physics.Raycast(new Ray(Camera.main.transform.position, Camera.main.transform.forward), out hit, 10f);
+        if (hit.collider != null) 
+            CheckValues(hit);
     }
 
-    void CheckValues()
+    void CheckValues(RaycastHit hit)
     {
-        if (Input.GetMouseButtonDown(0) && Input.mousePosition == square2.transform.position)
+        if (hit.collider.gameObject.transform.position == square2.transform.position)//Input.GetMouseButtonDown(0) && Input.mousePosition == square2.transform.position)
         {
             click1 = true;
         }
-        else if (Input.GetMouseButtonDown(0) && click1 && Input.mousePosition == square1.transform.position)
+        else if (click1 && hit.collider.gameObject.transform.position == square1.transform.position)
         {
             click2 = true;
         }
-        else if (Input.GetMouseButtonDown(0) && click2 && Input.mousePosition == square9.transform.position)
+        else if (click2 && hit.collider.gameObject.transform.position == square9.transform.position)
         {
             click3 = true;
         }
-        else if (Input.GetMouseButtonDown(0) && click3 && Input.mousePosition == square4.transform.position)
+        else if (click3 && hit.collider.gameObject.transform.position == square4.transform.position)
         {
-            puzzleComplete = true;
+            PuzzlesFinishedManager.Keycode();
         }
 
         if (Input.GetMouseButtonDown(0) && !miss1)

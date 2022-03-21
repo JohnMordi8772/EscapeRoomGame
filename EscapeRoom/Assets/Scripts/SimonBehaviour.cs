@@ -51,7 +51,7 @@ public class SimonBehaviour : MonoBehaviour
 
             if (playerPos == simon.Count - 1)
             {
-                print("Done");
+                PuzzlesFinishedManager.Simon();
             }
         }
     }
