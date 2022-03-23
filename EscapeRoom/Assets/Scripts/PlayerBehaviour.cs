@@ -43,6 +43,8 @@ public class PlayerBehaviour : MonoBehaviour
     public KeyCode crouch = KeyCode.LeftShift;
     public float sensitivity = 200f;
 
+    public bool canLook = true;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -51,7 +53,10 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         moveDir = (transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical")).normalized;
-        CameraMovement();
+        if (canLook)
+        {
+            CameraMovement();
+        }
         Crouch();
 
         if (Input.GetKeyDown(KeyCode.E))
