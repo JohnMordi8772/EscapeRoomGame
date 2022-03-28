@@ -45,8 +45,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool canLook = true;
 
+    Vector3 startPosition;
+
     void Start()
     {
+        startPosition = transform.position;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -67,6 +70,9 @@ public class PlayerBehaviour : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
+
+        if (transform.position.y < -20)
+            transform.position = startPosition;
     }
 
     void FixedUpdate()
@@ -199,7 +205,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 2))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 5))
             {
                 GameObject hit_ = hit.collider.gameObject;
 
