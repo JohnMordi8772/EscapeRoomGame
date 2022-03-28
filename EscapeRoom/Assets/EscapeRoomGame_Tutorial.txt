@@ -1,0 +1,14 @@
+Keybinds:
+
+WASD - Movement
+
+Q - Room Shift Menu
+Used to enable the player's ability to shift rooms around.
+
+E - Interact
+
+Description:
+
+The player is placed in front of a wall of eight rooms, with a final locked door. This door will not open until all four puzzles, 
+found within the eight rooms, are completed. In order to find and complete these puzzles, the player will need to rearrange the rooms, 
+with only one being accessible at a time.
