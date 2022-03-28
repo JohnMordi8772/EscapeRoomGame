@@ -7,7 +7,7 @@ public class PlayerBehaviour : MonoBehaviour
     public Camera cam;
     public Rigidbody rb;
     public CapsuleCollider coll;
-
+    
     public bool grounded = false;
     public PhysicMaterial normal;
     public PhysicMaterial slip;
