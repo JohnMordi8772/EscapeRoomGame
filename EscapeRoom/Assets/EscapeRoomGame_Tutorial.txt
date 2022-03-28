@@ -3,6 +3,7 @@ Keybinds:
 WASD - Movement
 
 Q - Room Shift Menu
+Used to enable the player's ability to shift rooms around.
 
 E - Interact
 
