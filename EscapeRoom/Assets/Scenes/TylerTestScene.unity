@@ -9804,7 +9804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7560014536855185026, guid: f4c4aedf374171449a0d7a5efb77ac01, type: 3}
       propertyPath: sensitivity
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7560014536855185027, guid: f4c4aedf374171449a0d7a5efb77ac01, type: 3}
       propertyPath: m_Constraints
@@ -9820,7 +9820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7560014536855185029, guid: f4c4aedf374171449a0d7a5efb77ac01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.25
+      value: -14.36
       objectReference: {fileID: 0}
     - target: {fileID: 7560014536855185029, guid: f4c4aedf374171449a0d7a5efb77ac01, type: 3}
       propertyPath: m_LocalPosition.z
