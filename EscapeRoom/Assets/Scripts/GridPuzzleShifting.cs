@@ -9,11 +9,13 @@ public class GridPuzzleShifting : MonoBehaviour
     [SerializeField] public GameObject[] rooms;
     [SerializeField] int[] roomsPos;
     [SerializeField] GameObject puzzlePad;
+    PlayerBehaviour pb;
     GameObject selected;
 
     // Start is called before the first frame update
     void Start()
     {
+        pb = GameObject.Find("Player").GetComponent<PlayerBehaviour>();
         roomsPos = new int[rooms.Length];
 
         for (int i = 0; i < rooms.Length; i++)
@@ -32,10 +34,12 @@ public class GridPuzzleShifting : MonoBehaviour
             if(Cursor.visible)
             {
                 Cursor.lockState = CursorLockMode.Confined;
+                pb.canLook = false;
             }
             else
             {
                 Cursor.lockState = CursorLockMode.Locked;
+                pb.canLook = true;
             }
         }
     }
