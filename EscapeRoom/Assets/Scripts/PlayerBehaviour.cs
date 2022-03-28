@@ -63,11 +63,6 @@ public class PlayerBehaviour : MonoBehaviour
         {
             GrabItem();
         }
-
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
         else if (Input.GetKey(KeyCode.R))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
