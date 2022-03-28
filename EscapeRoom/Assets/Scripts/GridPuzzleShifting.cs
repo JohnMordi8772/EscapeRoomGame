@@ -9,7 +9,9 @@ public class GridPuzzleShifting : MonoBehaviour
     [SerializeField] public GameObject[] rooms;
     [SerializeField] int[] roomsPos;
     [SerializeField] GameObject puzzlePad;
+    [SerializeField] Camera playerCam, shiftingCam;
     PlayerBehaviour pb;
+
     GameObject selected;
 
     // Start is called before the first frame update
@@ -27,10 +29,12 @@ public class GridPuzzleShifting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q) || (Input.GetKeyDown(KeyCode.Escape) && puzzlePad.activeInHierarchy))
         {
             puzzlePad.SetActive(!puzzlePad.activeInHierarchy);
             Cursor.visible = puzzlePad.activeInHierarchy;
+            playerCam.gameObject.SetActive(!playerCam.gameObject.activeInHierarchy);
+            shiftingCam.gameObject.SetActive(!shiftingCam.gameObject.activeInHierarchy);
             if(Cursor.visible)
             {
                 Cursor.lockState = CursorLockMode.Confined;
