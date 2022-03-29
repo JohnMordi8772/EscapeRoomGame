@@ -22,10 +22,26 @@ public class DiegoArrangementPuzzleController : MonoBehaviour
 
     public bool puzzleComplete = false;
 
+<<<<<<< Updated upstream
     // Update is called once per frame
     void Update()
     {
         CheckValues();
+=======
+    RaycastHit hit;
+
+    public AudioSource hitSound;
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+            Physics.Raycast(new Ray(Camera.main.transform.position, Camera.main.transform.forward), out hit, 10f);
+        if (hit.collider != null)
+        {
+            CheckValues(hit);
+        }
+>>>>>>> Stashed changes
     }
 
     void CheckValues()

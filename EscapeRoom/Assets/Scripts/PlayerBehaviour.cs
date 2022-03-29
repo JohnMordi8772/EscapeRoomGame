@@ -43,6 +43,15 @@ public class PlayerBehaviour : MonoBehaviour
     public KeyCode crouch = KeyCode.LeftShift;
     public float sensitivity = 200f;
 
+<<<<<<< Updated upstream
+=======
+    public bool canLook = true;
+
+    Vector3 startPosition;
+
+    public AudioSource audSource;
+
+>>>>>>> Stashed changes
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -207,7 +216,48 @@ public class PlayerBehaviour : MonoBehaviour
                     item.transform.parent = gameObject.transform;
                     item.transform.localPosition = handPos;
                     itemHeld = true;
+
+                    audSource.Play();
                 }
+<<<<<<< Updated upstream
+=======
+                else if(hit_.tag == "Simon")
+                {
+                    hit_.GetComponent<SimonButtons>().Press();
+
+                    audSource.Play();
+                }
+                else if(hit_.tag == "NumberCube")
+                {
+                    audSource.Play();
+
+                    GameObject NumberCube = hit_;
+                    GameObject ChangedKey;
+                    switch (NumberCube.name)
+                    {
+                        case "Cube 4":
+                            ChangedKey = GameObject.Find("Key 4");
+                            ChangedKey.GetComponent<MeshRenderer>().material = NumberCube.GetComponent<MeshRenderer>().material;
+                            Destroy(NumberCube);
+                            break;
+                        case "Cube 1":
+                            ChangedKey = GameObject.Find("Key 2");
+                            ChangedKey.GetComponent<MeshRenderer>().material = NumberCube.GetComponent<MeshRenderer>().material;
+                            Destroy(NumberCube);
+                            break;
+                        case "Cube 2":
+                            ChangedKey = GameObject.Find("Key 1");
+                            ChangedKey.GetComponent<MeshRenderer>().material = NumberCube.GetComponent<MeshRenderer>().material;
+                            Destroy(NumberCube);
+                            break;
+                        case "Cube 3":
+                            ChangedKey = GameObject.Find("Key 9");
+                            ChangedKey.GetComponent<MeshRenderer>().material = NumberCube.GetComponent<MeshRenderer>().material;
+                            Destroy(NumberCube);
+                            break;
+                    }
+                }    
+>>>>>>> Stashed changes
             }
         }
         else
