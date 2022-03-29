@@ -47,6 +47,7 @@ public class PlayerBehaviour : MonoBehaviour
     Vector3 startPosition;
 
     public AudioSource audSource;
+    public AudioClip correct, incorrect;
     
     void Start()
     {
@@ -217,12 +218,17 @@ public class PlayerBehaviour : MonoBehaviour
                     item.transform.localPosition = handPos;
                     itemHeld = true;
 
-                    audSource.Play();
+                    audSource.PlayOneShot(correct);
                 }
-                else if(hit_.tag == "Simon")
+                else if(hit_.gameObject.GetComponent<SimonButtons>() != null)
                 {
                     hit_.GetComponent<SimonButtons>().Press();
-
+                    if(hit_.tag == "SimonStarter")
+                        audSource.Play();
+                }
+                else if(hit_.name == "Projector")
+                {
+                    hit_.GetComponent<CheckingBeams>().Activate();
                     audSource.Play();
                 }
                 else if(hit_.tag == "NumberCube")
@@ -336,5 +342,15 @@ public class PlayerBehaviour : MonoBehaviour
             collision.GetContacts(contacts);
             GroundCheck(contacts);
         }
+    }
+
+    public void Correct()
+    {
+        audSource.PlayOneShot(correct);
+    }
+
+    public void Incorrect()
+    {
+        audSource.PlayOneShot(incorrect);
     }
 }
