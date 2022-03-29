@@ -16,18 +16,12 @@ public class DiegoArrangementPuzzleController : MonoBehaviour
     private bool miss2;
     private bool miss3;
 
-    private bool click1 = false;
-    private bool click2 = false;
-    private bool click3 = false;
+    public bool click1 = false;
+    public bool click2 = false;
+    public bool click3 = false;
 
     public bool puzzleComplete = false;
 
-<<<<<<< Updated upstream
-    // Update is called once per frame
-    void Update()
-    {
-        CheckValues();
-=======
     RaycastHit hit;
 
     public AudioSource hitSound;
@@ -41,49 +35,57 @@ public class DiegoArrangementPuzzleController : MonoBehaviour
         {
             CheckValues(hit);
         }
->>>>>>> Stashed changes
     }
 
-    void CheckValues()
+    void CheckValues(RaycastHit hit)
     {
-        if (Input.GetMouseButtonDown(0) && Input.mousePosition == square2.transform.position)
+        if (hit.collider.gameObject.transform.position == square2.transform.position)//Input.GetMouseButtonDown(0) && Input.mousePosition == square2.transform.position)
         {
             click1 = true;
+            print("click1");
         }
-        else if (Input.GetMouseButtonDown(0) && click1 && Input.mousePosition == square1.transform.position)
+
+        else if (click1 == true  && hit.collider.gameObject.transform.position == square1.transform.position)
         {
             click2 = true;
+            print("click2");
         }
-        else if (Input.GetMouseButtonDown(0) && click2 && Input.mousePosition == square9.transform.position)
+        else if (click1 == true && click2 != true && hit.collider.gameObject.transform.position != square1.transform.position)
         {
-            click3 = true;
-        }
-        else if (Input.GetMouseButtonDown(0) && click3 && Input.mousePosition == square4.transform.position)
-        {
-            puzzleComplete = true;
-        }
-
-        if (Input.GetMouseButtonDown(0) && !miss1)
-        {
-            miss1 = true;
-        }
-        else if (Input.GetMouseButtonDown(0) && miss1)
-        {
-            miss2 = true;
-        }
-        else if (Input.GetMouseButtonDown(0) && miss2)
-        {
-            miss3 = true;
-        }
-        else if (Input.GetMouseButtonDown(0) && miss3)
-        {
-            miss1 = false;
-            miss2 = false;
-            miss3 = false;
-
             click1 = false;
             click2 = false;
             click3 = false;
         }
+        else if (click2 == true  && hit.collider.gameObject.transform.position == square4.transform.position)
+        {
+            click3 = true;
+            print("click3");
+        }
+        else if (click2 == true && click3 == false && hit.collider.gameObject.transform.position != square4.transform.position)
+        {
+            click1 = false;
+            click2 = false;
+            click3 = false;
+        }
+        else if (click3 == true && hit.collider.gameObject.transform.position == square9.transform.position)
+        {
+            PuzzlesFinishedManager.Keycode();
+        }
+        else if (click3 == true && hit.collider.gameObject.transform.position != square9.transform.position)
+        {
+            click1 = false;
+            click2 = false;
+            click3 = false;
+        }
+
+
+       /* if (miss1 == true)
+        {
+
+            click1 = false;
+            click2 = false;
+            click3 = false;
+            miss1 = false;
+        }*/
     }
 }

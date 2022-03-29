@@ -7,7 +7,7 @@ public class PlayerBehaviour : MonoBehaviour
     public Camera cam;
     public Rigidbody rb;
     public CapsuleCollider coll;
-
+    
     public bool grounded = false;
     public PhysicMaterial normal;
     public PhysicMaterial slip;
@@ -42,40 +42,38 @@ public class PlayerBehaviour : MonoBehaviour
     public KeyCode sprint = KeyCode.LeftControl;
     public KeyCode crouch = KeyCode.LeftShift;
     public float sensitivity = 200f;
-
-<<<<<<< Updated upstream
-=======
     public bool canLook = true;
 
     Vector3 startPosition;
 
     public AudioSource audSource;
-
->>>>>>> Stashed changes
+    
     void Start()
     {
+        startPosition = transform.position;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
         moveDir = (transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical")).normalized;
-        CameraMovement();
+        if (canLook)
+        {
+            CameraMovement();
+        }
         Crouch();
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             GrabItem();
         }
-
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
         else if (Input.GetKey(KeyCode.R))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
+
+        if (transform.position.y < -20)
+            transform.position = startPosition;
     }
 
     void FixedUpdate()
@@ -208,19 +206,19 @@ public class PlayerBehaviour : MonoBehaviour
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 2))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 5))
             {
-                if (hit.collider.gameObject.tag == "Item")
+                GameObject hit_ = hit.collider.gameObject;
+
+                if (hit_.tag == "Item")
                 {
-                    item = hit.collider.gameObject;
+                    item = hit_;
                     item.transform.parent = gameObject.transform;
                     item.transform.localPosition = handPos;
                     itemHeld = true;
 
                     audSource.Play();
                 }
-<<<<<<< Updated upstream
-=======
                 else if(hit_.tag == "Simon")
                 {
                     hit_.GetComponent<SimonButtons>().Press();
@@ -230,7 +228,6 @@ public class PlayerBehaviour : MonoBehaviour
                 else if(hit_.tag == "NumberCube")
                 {
                     audSource.Play();
-
                     GameObject NumberCube = hit_;
                     GameObject ChangedKey;
                     switch (NumberCube.name)
@@ -257,7 +254,6 @@ public class PlayerBehaviour : MonoBehaviour
                             break;
                     }
                 }    
->>>>>>> Stashed changes
             }
         }
         else
