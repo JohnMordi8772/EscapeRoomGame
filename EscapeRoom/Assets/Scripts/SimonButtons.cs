@@ -9,11 +9,32 @@ public class SimonButtons : MonoBehaviour
 
     public GameObject fb;
 
+    public PlayerBehaviour forSounds;
+
+    static int i;
+
+    private void Start()
+    {
+        i = 0;
+    }
+
     public void Press()
     {
-        if (heldInt >= 0 && sb.active)
+        if (gameObject.tag == "Simon")
         {
-            StartCoroutine("Pressed");
+            if (heldInt == sb.simon[i] && sb.active)
+            {
+                StartCoroutine("Pressed");
+                forSounds.Correct();
+                i++;
+            }
+            else
+            {
+                forSounds.Incorrect();
+                sb.Input(heldInt);
+                i = 0;
+                //sb.StartPuzzle();
+            }
         }
         else
         {

@@ -24,14 +24,15 @@ public class DiegoArrangementPuzzleController : MonoBehaviour
 
     RaycastHit hit;
 
-    public AudioSource hitSound;
+    public PlayerBehaviour hitSound;
 
     // Update is called once per frame
     void Update()
     {
+        hit = new RaycastHit();
         if (Input.GetKeyDown(KeyCode.E))
             Physics.Raycast(new Ray(Camera.main.transform.position, Camera.main.transform.forward), out hit, 10f);
-        if (hit.collider != null)
+        if (hit.collider != null && !PuzzlesFinishedManager.keycodePuzzleComplete)
         {
             CheckValues(hit);
         }
@@ -43,29 +44,34 @@ public class DiegoArrangementPuzzleController : MonoBehaviour
         {
             click1 = true;
             print("click1");
+            hitSound.Correct();
         }
 
         else if (click1 == true  && hit.collider.gameObject.transform.position == square1.transform.position)
         {
             click2 = true;
             print("click2");
+            hitSound.Correct();
         }
         else if (click1 == true && click2 != true && hit.collider.gameObject.transform.position != square1.transform.position)
         {
             click1 = false;
             click2 = false;
             click3 = false;
+            hitSound.Incorrect();
         }
         else if (click2 == true  && hit.collider.gameObject.transform.position == square4.transform.position)
         {
             click3 = true;
             print("click3");
+            hitSound.Correct();
         }
         else if (click2 == true && click3 == false && hit.collider.gameObject.transform.position != square4.transform.position)
         {
             click1 = false;
             click2 = false;
             click3 = false;
+            hitSound.Incorrect();
         }
         else if (click3 == true && hit.collider.gameObject.transform.position == square9.transform.position)
         {
@@ -76,6 +82,7 @@ public class DiegoArrangementPuzzleController : MonoBehaviour
             click1 = false;
             click2 = false;
             click3 = false;
+            hitSound.Incorrect();
         }
 
 

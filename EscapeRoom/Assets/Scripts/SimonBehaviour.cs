@@ -16,6 +16,7 @@ public class SimonBehaviour : MonoBehaviour
     {
         player = new List<int>();
         simon = new List<int>();
+        playerPos = 0;
 
         for (int i = 0; i < 4; i++)
         {
@@ -45,11 +46,13 @@ public class SimonBehaviour : MonoBehaviour
             else
             {
                 player = new List<int>();
-                simon = new List<int>();
-                active = false;
+                playerPos = 0;
+                //simon = new List<int>();
+                //active = false;
+                return;
             }
 
-            if (playerPos == simon.Count - 1)
+            if (playerPos == simon.Count)
             {
                 PuzzlesFinishedManager.Simon();
             }

@@ -23,7 +23,7 @@ public class WirePuzzleBehaviour : MonoBehaviour
     {
         if (Green.transform.position == new Vector3(-11, 11, 0) && LightBlue.transform.position == new Vector3(0, 11, 0) && Red.transform.position == new Vector3(11, 11, 0) &&
             DarkBlue.transform.position == new Vector3(-11, 0, 0) && Yellow.transform.position == new Vector3(0, 0, 0) && Magenta.transform.position == new Vector3(11, 0, 0) &&
-            Orange.transform.position == new Vector3(-11, -11, 0) && Black.transform.position == new Vector3(0, -11, 0) && Empty.transform.position == new Vector3(11, -11, 0))
+            Orange.transform.position == new Vector3(-11, -11, 0) && Black.transform.position == new Vector3(0, -11, 0) && Empty.transform.position == new Vector3(11, -11, 0) && !PuzzlesFinishedManager.wirePuzzleComplete)
         {
             PuzzlesFinishedManager.Wire();
         }

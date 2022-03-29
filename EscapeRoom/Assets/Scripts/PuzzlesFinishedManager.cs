@@ -9,6 +9,9 @@ public class PuzzlesFinishedManager : MonoBehaviour
     static GameObject wireImage, keycodeImage, simonImage, beamImage;
     public GameObject wireImageS, keycodeImageS, simonImageS, beamImageS;
     public GameObject door;
+    static AudioSource audioSource;
+    public AudioClip finished;
+    static AudioClip fin;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,8 @@ public class PuzzlesFinishedManager : MonoBehaviour
         keycodeImage = keycodeImageS;
         simonImage = simonImageS;
         beamImage = beamImageS;
+        audioSource = GetComponent<AudioSource>();
+        fin = finished;
     }
 
     // Update is called once per frame
@@ -33,23 +38,32 @@ public class PuzzlesFinishedManager : MonoBehaviour
     {
         wirePuzzleComplete = true;
         wireImage.GetComponent<Image>().color = Color.green;
+        PuzzleSolved();
     }
 
     public static void Keycode()
     {
         keycodePuzzleComplete = true;
         keycodeImage.GetComponent<Image>().color = Color.green;
+        PuzzleSolved();
     }
 
     public static void Simon()
     {
         simonSaysComplete = true;
         simonImage.GetComponent<Image>().color = Color.green;
+        PuzzleSolved();
     }
 
     public static void Beam()
     {
         beamPuzzleComplete = true;
         beamImage.GetComponent<Image>().color = Color.green;
+        PuzzleSolved();
+    }
+
+    public static void PuzzleSolved()
+    {
+        audioSource.PlayOneShot(fin);
     }
 }
