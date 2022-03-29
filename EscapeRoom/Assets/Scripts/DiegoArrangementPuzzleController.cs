@@ -24,13 +24,17 @@ public class DiegoArrangementPuzzleController : MonoBehaviour
 
     RaycastHit hit;
 
+    public AudioSource hitSound;
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
             Physics.Raycast(new Ray(Camera.main.transform.position, Camera.main.transform.forward), out hit, 10f);
-        if (hit.collider != null) 
+        if (hit.collider != null)
+        {
             CheckValues(hit);
+        }
     }
 
     void CheckValues(RaycastHit hit)

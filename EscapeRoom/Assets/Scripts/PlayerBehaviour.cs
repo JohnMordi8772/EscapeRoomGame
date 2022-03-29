@@ -42,11 +42,12 @@ public class PlayerBehaviour : MonoBehaviour
     public KeyCode sprint = KeyCode.LeftControl;
     public KeyCode crouch = KeyCode.LeftShift;
     public float sensitivity = 200f;
-
     public bool canLook = true;
 
     Vector3 startPosition;
 
+    public AudioSource audSource;
+    
     void Start()
     {
         startPosition = transform.position;
@@ -215,13 +216,18 @@ public class PlayerBehaviour : MonoBehaviour
                     item.transform.parent = gameObject.transform;
                     item.transform.localPosition = handPos;
                     itemHeld = true;
+
+                    audSource.Play();
                 }
                 else if(hit_.tag == "Simon")
                 {
                     hit_.GetComponent<SimonButtons>().Press();
+
+                    audSource.Play();
                 }
                 else if(hit_.tag == "NumberCube")
                 {
+                    audSource.Play();
                     GameObject NumberCube = hit_;
                     GameObject ChangedKey;
                     switch (NumberCube.name)
