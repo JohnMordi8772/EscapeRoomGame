@@ -1369,7 +1369,7 @@ PrefabInstance:
     - target: {fileID: 4184058647475656447, guid: a66885a77caf38d4fa91fc753c238979, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 657bb59df01f1fa49a426a8ec4a4f0c6, type: 2}
+      objectReference: {fileID: 2100000, guid: 4ca9805e37aacec42bf9d3abcbae2e78, type: 2}
     - target: {fileID: 5165134079208186903, guid: a66885a77caf38d4fa91fc753c238979, type: 3}
       propertyPath: m_Name
       value: Cube 2
@@ -5385,7 +5385,7 @@ PrefabInstance:
     - target: {fileID: 1803287890290434731, guid: df41302822d14004da82285b021c4201, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ab100a3a014e09f4faccadc3f574bc90, type: 2}
+      objectReference: {fileID: 2100000, guid: fc25896781cadea449983b4ad672a78c, type: 2}
     - target: {fileID: 7257671711204675651, guid: df41302822d14004da82285b021c4201, type: 3}
       propertyPath: m_Name
       value: Cube 4
@@ -5904,7 +5904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10588236, g: 0.3647059, b: 0.18431373, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -19815,7 +19815,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924477534}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1220525298}
@@ -19839,7 +19839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 0.2392157, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.76875544, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -19974,7 +19974,7 @@ PrefabInstance:
     - target: {fileID: 1428609989917499693, guid: dd802345abc0abb44a439126ac8a835a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6aa85d908d9f3b94681684c0ad77fc5c, type: 2}
+      objectReference: {fileID: 2100000, guid: fc25896781cadea449983b4ad672a78c, type: 2}
     - target: {fileID: 7957170085739402181, guid: dd802345abc0abb44a439126ac8a835a, type: 3}
       propertyPath: m_Name
       value: Cube 3
