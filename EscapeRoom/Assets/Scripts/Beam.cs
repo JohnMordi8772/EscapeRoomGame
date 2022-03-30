@@ -34,7 +34,7 @@ public class Beam : MonoBehaviour
             //    hit.transform.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
             //}
             lr.SetPosition(1, hit.point);
-            Debug.Log(hit.collider.gameObject.tag);
+            //Debug.Log(hit.collider.gameObject.tag);
             if(hit.collider.gameObject.tag == "Receiver")
             {
                 hitReceiver = true;
